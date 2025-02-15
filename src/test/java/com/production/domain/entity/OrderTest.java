@@ -1,8 +1,6 @@
-package com.production.domain;
+package com.production.domain.entity;
 
 
-import com.production.domain.entity.ItemOrder;
-import com.production.domain.entity.Order;
 import com.production.infrastructure.persistence.entity.ProductionOrderStatus;
 import org.junit.jupiter.api.Test;
 

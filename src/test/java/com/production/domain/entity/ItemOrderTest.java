@@ -1,7 +1,6 @@
-package com.production.domain;
+package com.production.domain.entity;
 
 
-import com.production.domain.entity.ItemOrder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

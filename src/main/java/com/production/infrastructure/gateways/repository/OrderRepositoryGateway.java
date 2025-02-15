@@ -20,8 +20,6 @@ public class OrderRepositoryGateway implements ProductionOrderGateway {
     @Autowired
     private  OrderMongoRepository orderRepository;
 
-
-
     @Override
     public Order receivedMessage(Order order) {
 
