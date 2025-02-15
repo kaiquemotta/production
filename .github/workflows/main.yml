@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '21'
+          distribution: 'adoptopenjdk'  # Ou 'zulu' se você preferir Zulu OpenJDK
 
       - name: Build with Maven
         run: mvn clean install
