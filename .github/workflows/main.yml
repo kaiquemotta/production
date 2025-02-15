@@ -83,6 +83,7 @@ jobs:
 
       - name: Configurar variáveis no Heroku
         run: |
+          heroku config:set MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} --app production-orders
           heroku config:set RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }} --app production-orders
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
@@ -102,15 +103,16 @@ jobs:
 
       - name: Configurar variáveis no Heroku
         run: |
-          heroku config:set RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }} --app your-heroku-prod-app-name
+          heroku config:set MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} --app production-orders
+          heroku config:set RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }} --app production-orders
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - uses: akhileshns/heroku-deploy@v3.13.15
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "your-heroku-prod-app-name"
-          heroku_email: "your-email@example.com"
+          heroku_app_name: "production-orders"
+          heroku_email: "kaique.motta@hotmail.com"
 
   check_coverage:
     runs-on: ubuntu-latest
