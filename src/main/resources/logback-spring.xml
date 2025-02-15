@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <!-- Definindo o Appender para o console -->
+    <!-- Definindo o Appender para o console com suporte a cores -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <!-- Formato do log com data, hora e a mensagem -->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} - %highlight(%-5level) %msg%n
+            </pattern>
         </encoder>
     </appender>
 
