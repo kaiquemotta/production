@@ -1,15 +1,15 @@
 package com.production.infrastructure.configuration;
 
 
-import org.springframework.amqp.core.Queue;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitConfig {
+public class JacksonConfig {
 
     @Bean
-    public Queue queue() {
-        return new Queue("queue.orders", true);
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Definindo o Appender para o console -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Formato do log com data, hora e a mensagem -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configuração do Logger -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+    </root>
+
+</configuration>

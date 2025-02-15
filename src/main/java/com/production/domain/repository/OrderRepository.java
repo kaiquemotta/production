@@ -1,4 +1,7 @@
 package com.production.domain.repository;
 
-public class OrderRepository {
+import com.production.domain.entity.Order;
+
+public interface OrderRepository {
+    void sendOrder(Order order);
 }

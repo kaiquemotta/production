@@ -1,4 +1,6 @@
 package com.production.domain.entity;
 
-public class Order {
+import java.util.List;
+
+public record Order(String orderId, List<ItemOrder> itemsOrder) {
 }
