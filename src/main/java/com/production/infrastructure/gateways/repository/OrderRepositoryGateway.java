@@ -1,5 +1,6 @@
 package com.production.infrastructure.gateways.repository;
 
+import com.production.application.dto.response.ProductionOrderResponseDTO;
 import com.production.application.gateways.ProductionOrderGateway;
 import com.production.domain.entity.Order;
 import com.production.infrastructure.gateways.mapper.OrderEntityMapper;
@@ -7,6 +8,8 @@ import com.production.infrastructure.persistence.entity.OrderEntity;
 import com.production.infrastructure.persistence.repository.OrderMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 @Component
@@ -19,8 +22,7 @@ public class OrderRepositoryGateway implements ProductionOrderGateway {
 
     @Override
     public Order receivedMessage(Order order) {
-//        OrderEntity orderEntity = OrderEntityMapper.toEntity(order);
-//        orderRepository.save(orderEntity);
+
         return null;
     }
 
@@ -29,5 +31,12 @@ public class OrderRepositoryGateway implements ProductionOrderGateway {
         OrderEntity orderEntity = OrderEntityMapper.toEntity(order);
         OrderEntity op = orderRepository.save(orderEntity);
         return OrderEntityMapper.toDomain(op);
+    }
+
+    @Override
+    public List<Order> getAllProductionOrder() {
+        List<OrderEntity> list = orderRepository.findAll();
+        List<Order> orders =  OrderEntityMapper.toDomain(list);
+        return orders;
     }
 }

@@ -4,6 +4,7 @@ package com.production.infrastructure.gateways.mapper;
 import com.production.domain.entity.Order;
 import com.production.infrastructure.persistence.entity.OrderEntity;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderEntityMapper {
@@ -31,5 +32,14 @@ public class OrderEntityMapper {
                         .map(ItemEntityMapper::toDomain)
                         .collect(Collectors.toList())
         );
+    }
+
+    public static List<Order> toDomain(List<OrderEntity> list) {
+        if (list == null) {
+            return null;
+        }
+        return list.stream()
+                .map(OrderEntityMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
