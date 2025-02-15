@@ -83,7 +83,7 @@ jobs:
 
       - name: Configurar variáveis no Heroku
         run: |
-          heroku config:set RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }} --app your-heroku-app-name
+          heroku config:set RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }} --app production-orders
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
