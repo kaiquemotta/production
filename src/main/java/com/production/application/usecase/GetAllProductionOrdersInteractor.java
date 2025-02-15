@@ -17,6 +17,7 @@ public class GetAllProductionOrdersInteractor {
     }
 
     public List<Order> getAllProductionOrders() {
-        return productionOrderGateway.getAllProductionOrder();
+        List<Order> productionOrders = productionOrderGateway.getAllProductionOrder();
+        return productionOrders;
     }
 }
