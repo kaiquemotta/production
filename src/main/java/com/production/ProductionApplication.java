@@ -8,10 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackages = "com.production.infrastructure.persistence.repository") // Especificando o pacote onde estão os repositórios
 
 public class ProductionApplication {
-
-	
 	public static void main(String[] args) {
 		SpringApplication.run(ProductionApplication.class, args);
 	}
-
 }
