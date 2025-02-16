@@ -153,29 +153,25 @@ jobs:
           heroku_app_name: "production-orders"
           heroku_email: "kaique.motta@hotmail.com"
 
-  check_coverage:
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'pull_request'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+check_coverage:
+  runs-on: ubuntu-latest
+  needs: test
+  if: github.event_name == 'pull_request'
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-      - name: Verificar cobertura mínima
-        run: |
-          coverage_report=$(cat target/site/jacoco/jacoco.xml)
-          # Exemplo simples de verificação de cobertura (ajuste conforme necessário)
-          if [[ $(grep -o 'lines-covered' <<< "$coverage_report" | wc -l) -lt 70 ]]; then
-            echo "Cobertura abaixo do esperado!" && exit 1
-          fi
-
-  branch_protection:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-    steps:
-      - name: Enforce branch protection
-        run: |
-          echo "Verificando se a branch foi protegida..."
-          # Aqui você pode usar uma API para verificar a configuração de proteção da branch, caso precise.
-          echo "As branches main e master estão protegidas."
+    - name: SonarQube Quality Gate Check
+      run: |
+        # Consultando o status do Quality Gate
+        sonar_status=$(curl -s -u ${{ secrets.SONAR_TOKEN }} "https://sonarcloud.io/api/qualitygates/project_status?projectKey=kaiquemotta_production")
+        
+        # Verificando o status do Quality Gate (pode ser 'OK' ou 'ERROR')
+        quality_gate_status=$(echo $sonar_status | jq -r '.projectStatus.status')
+        
+        if [ "$quality_gate_status" != "OK" ]; then
+          echo "SonarQube Quality Gate failed: Coverage is below 70%" && exit 1
+        else
+          echo "SonarQube Quality Gate passed!"
+        fi
