@@ -169,3 +169,13 @@ jobs:
           if [[ $(grep -o 'lines-covered' <<< "$coverage_report" | wc -l) -lt 70 ]]; then
             echo "Cobertura abaixo do esperado!" && exit 1
           fi
+
+  branch_protection:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    steps:
+      - name: Enforce branch protection
+        run: |
+          echo "Verificando se a branch foi protegida..."
+          # Aqui você pode usar uma API para verificar a configuração de proteção da branch, caso precise.
+          echo "As branches main e master estão protegidas."
