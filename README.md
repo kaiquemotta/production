@@ -20,7 +20,4 @@ O microserviço deve ser executado com o perfil `local`. Isso pode ser configura
 mvn spring-boot:run -Dspring.profiles.active=local
 
 ## Evidencias.
-
-![image](https://github.com/user-attachments/assets/e6148a78-45b5-482b-be03-e6fddb91fc25)
-![image](https://github.com/user-attachments/assets/86570dc2-d622-4349-95f9-93fd76fe0027)
-![image](https://github.com/user-attachments/assets/1b3d9b09-ecb8-460f-8041-9587443668a9)
+https://github.com/kaiquemotta/production/issues/7#issue-2861927898
